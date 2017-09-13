@@ -3,6 +3,7 @@ header('content-type:text/html;charset=utf-8');
 error_reporting(7);
 ini_set('memory_limit', '-1'); 
 set_time_limit(0);
+$starton = microtime(true);
 date_default_timezone_set('PRC');
 require_once('./includes/db.class.php');
 require_once('./includes/function.php');
@@ -106,3 +107,7 @@ $objWriter->save($outputFilePath . $outputFileName);
         echo fread($file,filesize($outputFilePath . $outputFileName));
         fclose($file);
 	***/
+
+$time = round(microtime(true) - (float)$starton, 5);
+echo '浪费计算时间共：',$time,'    浪费内存共计：', (memory_get_usage(true) / 1024), "kb\n\nDone.\n";
+	
