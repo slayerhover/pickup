@@ -29,6 +29,14 @@
 **使用方式：CLI**
 - 采集:# php -f exportExcel.php
 
+**后台执行**
+
+``` 
+
+# php -f exportExcel.php
+
+```
+
 **功能描述**
 - 发送Email
 
