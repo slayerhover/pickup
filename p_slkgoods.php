@@ -10,7 +10,7 @@ include_once("./includes/simple_html_dom.php");
 $dbconfig = array(
                 'dsn'         =>    'mysql:host=localhost;dbname=pickup',
                 'name'        =>    'pickup',
-                'password'    =>    'sioned',
+                'password'    =>    'pickup',
             ); 
 $_DB =new DB($dbconfig);
 
@@ -29,7 +29,7 @@ switch($argc){
 
 try{
 	$target = $_DB->getAll("select * from target where id>={$start} and id<={$end} order by id ASC");
-	if( empty($target) ){ throw new Exception('无内容待查.'); }
+	if( empty($target) ){ throw new Exception('nothing to do.'); }
 	foreach($target as $k=>$v){
 		$goodsname = addslashes($v['name']);
 		if($_DB->getValue("select count(*) from products where name='{$goodsname}'")>0)	continue;
@@ -43,7 +43,7 @@ try{
 			if($data==FALSE){
 				//throw new Exception("页面获取失败.failed on {$v['links']}"); 
 				echo "jump {$v['id']}\n";
-	                        continue;
+	            continue;
 			}
 		}
 		$from	=	strpos($data, '<div id="breadcrumb">');
@@ -57,7 +57,7 @@ try{
 		if(!$thtml){ 
 			//throw new Exception("HTML内容加载失败."); 
 			echo "jump {$v['id']}\n";
-                        continue;
+            continue;
 		}
 		echo "开始分析页面标签.\n";
 			
@@ -71,8 +71,8 @@ try{
                 $to     =       strpos($data, '<div class="grid-width-2-4" id="preparingStockSId">');
                 if($from==FALSE || $to==FALSE){
                         //throw new Exception("化学数据字符串未截取到");
-			echo "jump {$v['id']}\n";
-			continue;
+						echo "jump {$v['id']}\n";
+						continue;
                 }
                 $hhtml  = str_get_html(substr($data, $from, $to-$from));
                 $huaxue	= $hhtml->find('tr');
@@ -151,7 +151,7 @@ try{
 		$shtml->clear();
 		unset($data);
 		echo "{$v['id']}.Insert product:{$rows['name']}\n";		
-		sleep(rand(1,2));
+		sleep(rand(5,10));
 	}
 }catch(Exception $e){
     echo "Failed: " . $e->getMessage();
