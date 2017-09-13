@@ -29,16 +29,28 @@ switch($argc){
 }}
 
 try{
+	$cookie = dirname(__FILE__) . '/cookie.txt';
+	/***先获取一份cookies并保存***,有时可能需要手动编辑一下
+	$url = "http://www.jd.com/products/Lapatinib-Ditosylate.html";
+	$ch = curl_init($url); //初始化
+	curl_setopt($ch, CURLOPT_HEADER, 0); 
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+	curl_setopt($ch, CURLOPT_COOKIEJAR,  $cookie); //存储cookies
+	curl_exec($ch);
+	curl_close($ch);
+	exit;
+	***/
+	
 	$target = $_DB->getAll("select * from target where id>={$start} and id<={$end} order by id ASC");
 	if( empty($target) ){ throw new Exception('nothing to do.'); }
 	foreach($target as $k=>$v){
 		$goodsname = addslashes($v['name']);
 		if($_DB->getValue("select count(*) from products where name='{$goodsname}'")>0)	continue;
-		$data	=	curl_data($v['links']);
+		$data	=	curl_get($v['links'], NULL, $cookie);
 		if($data==FALSE){ 
 			for($l=0;$l<4;$l++){
 				sleep(rand(1,3));
-				$data = curl_data($v['links']);
+				$data = curl_get($v['links'], NULL, $cookie);
 				if($data!=FALSE){ break; }
 			}
 			if($data==FALSE){

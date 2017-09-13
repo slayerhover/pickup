@@ -29,13 +29,13 @@ switch($argc){
 }}
 
 try{
-	$url	=	"http://www.slk.cn/frontend/ajaxproduct.jhtml?queryName=";
+	$url	=	"http://www.jd.com/frontend/ajaxproduct.jhtml?queryName=";
 	for($i=$start;$i<=$end;$i++){
-		$data	=	curl_data($url . chr($i));
+		$data	=	curl_get($url . chr($i));
 		if($data==FALSE){ 
 			for($l=0;$l<3;$l++){
 				sleep(rand(1,3));
-				$data = curl_data($url . chr($i));
+				$data = curl_get($url . chr($i));
 				if($data!=FALSE){ break; }
 			}
 			if($data==FALSE){
@@ -52,7 +52,7 @@ try{
 			if( empty($onelist) ){ continue; }
 			
 			$rows = array(
-				'links'			=> 'http://www.slk.cn' . $tr->find('a', 0)->href,
+				'links'			=> 'http://www.jd.com' . $tr->find('a', 0)->href,
 				'name'			=> $tr->find('a', 0)->innertext,
 				'description'	=> $tr->find('td', 1)->innertext,
 			);
