@@ -3,11 +3,10 @@
 
 
 **使用方式：**
-- CLI
+- CLI:# php -f pickupGoods.php start end
 
 
 **命令行参数：** 
-php -f pickupGoods.php start end
 |参数名|必选|类型|说明|
 |:----    |:---|:----- |-----   |
 |start|否  |int |起始计数 默认值: 0 |
