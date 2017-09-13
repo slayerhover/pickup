@@ -6,8 +6,8 @@ set_time_limit(0);
 date_default_timezone_set('PRC');
 require_once('./includes/db.class.php');
 require_once('./includes/function.php');
-require_once("./Excel/PHPExcel.php");
-require_once("./Excel/PHPExcel/Writer/Excel5.php");
+require_once("./PhpExcel/PHPExcel.php");
+require_once("./PhpExcel/PHPExcel/Writer/Excel5.php");
 $dbconfig = array(
                 'dsn'         =>    'mysql:host=localhost;dbname=pickup',
                 'name'        =>    'pickup',
