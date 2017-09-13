@@ -23,9 +23,8 @@ function export($date, $user_id, $dataset){
 		$objPHPExcel->getActiveSheet()->setTitle('消费清单');
 		$cellname  = array(
 			array('repaydate','还款日'),
-			array('name','借款标题'),//字段名，excel 列名			
-			array('yhmoney','金额'),	
-			array('shcapital','消费项目'),
+			array('name','消费项目'),
+			array('money','金额'),	
 			array('times','时间'),
 		);
 		$r = exportExcel($date.'账单', $cellname, $dataset[0], $objPHPExcel);								
@@ -51,8 +50,7 @@ function sendmail($email, $coname, $subject, $body, $file){
 		$mail->AddAddress($email, $coname);
 		$mail->Subject =$subject;
 		$mail->Body = $body;
-		$mail->AddAttachment($file);
-		
+		$mail->AddAttachment($file);		
 		return $mail->Send();		 
 }
 
@@ -66,10 +64,9 @@ try{
 		$sql		= "SELECT * from bill where user_id='{$value['user_id']}' and date='{$date}'";
 		$dataset	= $_DB->getAll($sql);		
 		$filename	= export($date, $value['user_id'], $dataset);
-		$body = "<br /><b>【用户消费清单】</b><p>尊敬的{$username}：<br />您好！{$date}的账单已经产生，记录了您{$date}的消费信息，现为您诚意奉上，供您参考.
-		</p><table class='gridtable'><tr>td>.". json_encode($dataset) ."<td></tr></table>";
+		$body = "<br /><b>【用户消费清单】</b><p>尊敬的{$username}：<br />您的账单在附件中送达。";
 		
-		sendmail($['email'], $value['username'], $date.'消费清单', $body, $filename);		
+		sendmail($value['email'], $value['username'], $date.'消费清单', $body, $filename);		
 		write_log("发送邮件到：".$value['email'].", 给".$value['username'].".");
 	}
 }catch(Exception $e){
