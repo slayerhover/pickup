@@ -42,27 +42,12 @@ $cellname  = array(
 $dataset	= $_DB->getAll("SELECT * from products");
 $rows		= [];
 foreach($dataset as $k=>$v){
+	$onepro	= $v;
 	if(empty($v['priceset'])){
-		$rows[]	=array(
-			'id'		=>$v['id'],
-			'catanum'	=>$v['catanum'],
-			'name'		=>$v['name'],
-			'size'		=>'',
-			'price'		=>'',
-			'status'	=>'',
-			'target'	=>$v['target'],
-			'pathway'	=>$v['pathway'],
-			'information'=>$v['information'],
-			'thumb'		=>$v['thumb'],
-			'cas'		=>$v['cas'],
-			'mw'		=>$v['mw'],
-			'formula'	=>$v['formula'],
-			'alcohol'	=>$v['alcohol'],
-			'dmso'		=>$v['dmso'],
-			'water'		=>$v['water'],
-			'small'		=>$v['small'],
-			'url'		=>$v['url'],
-		);
+			$onepro['size']		='';
+			$onepro['price']	='';
+			$onepro['status']	='';
+			array_push($rows, $onepro);
 	}else{
 		$priceset = json_decode($v['priceset'], TRUE);
 		if(!empty($priceset)&&is_array($priceset)){						
@@ -70,28 +55,12 @@ foreach($dataset as $k=>$v){
 			if($v1['size']=='10mM (in 1mL DMSO)')	continue;
 			if($v1['price']<500)	continue;
 			
-			$rows[]	=	array(
-				'id'		=>$v['id'],
-				'catanum'	=>$v['catanum'],
-				'name'		=>$v['name'],
-				'size'		=>$v1['size'],
-				'price'		=>$v1['price'],
-				'status'	=>$v1['status'],
-				'target'	=>$v['target'],
-				'pathway'	=>$v['pathway'],
-				'information'=>$v['information'],
-				'thumb'		=>$v['thumb'],
-				'cas'		=>$v['cas'],
-				'mw'		=>$v['mw'],
-				'formula'	=>$v['formula'],
-				'alcohol'	=>$v['alcohol'],
-				'dmso'		=>$v['dmso'],
-				'water'		=>$v['water'],
-				'small'		=>trim($v['small']),
-				'url'		=>$v['url'],
-			);			
+			$onepro['size']		=$v1['size'],
+			$onepro['price']	=$v1['price'],
+			$onepro['status']	=$v1['status'],			
+			array_push($rows, $onepro);
 		}}
-	}
+	}	
 }
 $objExcel   = makeExcel('导出产品', $cellname, $rows, $objExcel);
 $outputFilePath = "./Uploads/";        
