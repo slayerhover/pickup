@@ -27,7 +27,7 @@ function export($date, $user_id, $dataset){
 			array('money','金额'),	
 			array('times','时间'),
 		);
-		$r = exportExcel($date.'账单', $cellname, $dataset[0], $objPHPExcel);								
+		$r = exportExcel($date.'账单', $cellname, $dataset[0], $objPHPExcel);
 		$objWriter = new PHPExcel_Writer_Excel2007($r);
 		$dirname   = './Uploads';
 		if( !is_dir($dirname) )	mk_dir('./Uploads');
