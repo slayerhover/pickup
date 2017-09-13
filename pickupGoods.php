@@ -3,6 +3,7 @@ header('content-type:text/html;charset=utf-8');
 error_reporting(7);
 ini_set('memory_limit', '-1'); 
 set_time_limit(0);
+$starton = microtime(true);
 require_once('./includes/db.class.php');
 require_once('./includes/pinyin.php');
 include_once("./includes/curl.php");
@@ -156,4 +157,6 @@ try{
 }catch(Exception $e){
     echo "Failed: " . $e->getMessage();
 }
-echo "\nDone.\n";	
+
+$time = round(microtime(true) - (float)$starton, 5);
+echo '浪费计算时间共：',$time,'    浪费内存共计：', (memory_get_usage(true) / 1024), "kb\n\nDone.\n";

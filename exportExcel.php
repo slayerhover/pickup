@@ -11,7 +11,7 @@ require_once("./PhpExcel/PHPExcel/Writer/Excel5.php");
 $dbconfig = array(
                 'dsn'         =>    'mysql:host=localhost;dbname=pickup',
                 'name'        =>    'pickup',
-                'password'    =>    'sioned',
+                'password'    =>    'pickup',
             ); 
 $_DB =new DB($dbconfig);
 $objExcel	= new PHPExcel();
