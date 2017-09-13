@@ -1,5 +1,4 @@
-**功能描述**
-- PHP采集器
+**PHP采集器**
 
 
 **使用方式：CLI**
@@ -23,8 +22,7 @@
 ```
 
 
-**功能描述**
-- 导出Excel
+**导出Excel**
 
 **使用方式：CLI**
 - 采集:# php -f exportExcel.php
@@ -37,8 +35,7 @@
 
 ```
 
-**功能描述**
-- 发送Email
+**发送Email**
 
 **使用方式：CLI**
 - 采集:# php -f sendMail.php
