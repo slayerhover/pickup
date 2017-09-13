@@ -3,13 +3,14 @@
 
 
 **使用方式：**
-- CLI:# php -f pickupGoods.php start end
+- CLI:# php -f filename start end
 
 
 **命令行参数：** 
 
 |参数名|必选|类型|说明|
 |:----    |:---|:----- |-----   |
+|filename|是  |string |执行文件名 |
 |start|否  |int |起始计数 默认值: 0 |
 |end|否  |int |结束计数 |
 
