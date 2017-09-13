@@ -10,7 +10,7 @@ include_once("./includes/simple_html_dom.php");
 $dbconfig = array(
                 'dsn'         =>    'mysql:host=localhost;dbname=pickup',
                 'name'        =>    'pickup',
-                'password'    =>    'sioned',
+                'password'    =>    'pickup',
             ); 
 $_DB =new DB($dbconfig);
 
@@ -28,7 +28,7 @@ switch($argc){
 }}
 
 try{
-	$url	=	"http://www.selleck.cn/frontend/ajaxproduct.jhtml?queryName=";
+	$url	=	"http://www.slk.cn/frontend/ajaxproduct.jhtml?queryName=";
 	for($i=$start;$i<=$end;$i++){
 		$data	=	curl_data($url . chr($i));
 		if($data==FALSE){ 
@@ -51,7 +51,7 @@ try{
 			if( empty($onelist) ){ continue; }
 			
 			$rows = array(
-				'links'			=> 'http://www.selleck.cn' . $tr->find('a', 0)->href,
+				'links'			=> 'http://www.slk.cn' . $tr->find('a', 0)->href,
 				'name'			=> $tr->find('a', 0)->innertext,
 				'description'	=> $tr->find('td', 1)->innertext,
 			);
