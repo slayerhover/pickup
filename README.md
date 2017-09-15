@@ -2,7 +2,7 @@
 
 
 **使用方式：CLI**
-- 采集:# php -f pickupGoods start end
+- bash:# php -f pickupGoods start end
 
 
 **命令行参数：** 
@@ -25,7 +25,7 @@
 **导出Excel exportExcel.php**
 
 **使用方式：CLI**
-- 采集:# php -f exportExcel.php
+- bash:# php -f exportExcel.php
 
 **后台执行**
 
@@ -38,7 +38,7 @@
 **发送Email sendMail.php**
 
 **使用方式：CLI**
-- 采集:# php -f sendMail.php
+- bash:# php -f sendMail.php
 
 
 **定时任务执行**
@@ -53,7 +53,7 @@
 **图片本地化 imglocally.php**
 
 **使用方式：CLI**
-- 采集:# php -f imglocally.php
+- bash:# php -f imglocally.php
 
 
 **后台执行**
@@ -67,7 +67,7 @@
 **命令行下查看图片 ascImage.php**
 
 **使用方式：CLI**
-- # php -f ascImage.php num
+- bash# php -f ascImage.php num
 **命令行参数：** 
 
 |参数名|必选|类型|说明|
