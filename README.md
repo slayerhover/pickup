@@ -64,7 +64,7 @@
 
 ```
 
-**图片本地化 ascImage.php**
+**命令行下查看图片 ascImage.php**
 
 **使用方式：CLI**
 - 采集:# php -f ascImage.php
