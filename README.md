@@ -1,8 +1,8 @@
-**PHP采集器**
+**PHP采集器pickupCatalog.php & pickupGoods.php**
 
 
 **使用方式：CLI**
-- 采集:# php -f pickupFilename start end
+- 采集:# php -f pickupGoods start end
 
 
 **命令行参数：** 
@@ -22,7 +22,7 @@
 ```
 
 
-**导出Excel**
+**导出Excel exportExcel.php**
 
 **使用方式：CLI**
 - 采集:# php -f exportExcel.php
@@ -35,7 +35,7 @@
 
 ```
 
-**发送Email**
+**发送Email sendMail.php**
 
 **使用方式：CLI**
 - 采集:# php -f sendMail.php
@@ -46,5 +46,34 @@
 ``` 
 
 0 2 * * * php -f /webroot/pickup/sendMail.php  >/dev/null 2>&1 &
+
+```
+
+
+**图片本地化 imglocally.php**
+
+**使用方式：CLI**
+- 采集:# php -f imglocally.php
+
+
+**后台执行**
+
+``` 
+
+# nohup php -f imglocally.php 1 5000 >result.txt 2>&1 &
+
+```
+
+**图片本地化 ascImage.php**
+
+**使用方式：CLI**
+- 采集:# php -f ascImage.php
+
+
+**CLI执行**
+
+``` 
+
+# php ascImage.php imagefilename.jpg 3
 
 ```
